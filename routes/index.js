@@ -170,6 +170,7 @@ router.get("/user/profile", (req, res) => {
 		name: "sungwoo",
 		country: "대한민국",
 		email: "swpheus1@gmail.com",
+		city_detail: "강서구 가양동 276",
 	};
 
 	res.json(member_Profile);
