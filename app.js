@@ -23,6 +23,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var postsRouter = require("./routes/posts");
 var articleRouter = require("./routes/article");
+var memberRouter = require("./routes/member");
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);
 app.use("/article", articleRouter);
+app.use("/member", memberRouter);
 
 //swagger UI 경로 설정
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
