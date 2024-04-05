@@ -14,6 +14,7 @@ router.get("/user/users", function (req, res, next) {
 		{id: 2, name: "유저2"},
 		{id: 3, name: "유저3"},
 		{id: 4, name: "유저4"},
+		{id: 4, name: "유저5"},
 	];
 	res.json(users);
 });
