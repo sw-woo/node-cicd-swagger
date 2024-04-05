@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 router.get("/all", (req, res) => {
 	member = [
 		{id: 1, name: "sungwoo1"},
-		{id: 2, name: "sungwoo2"},
+		// {id: 2, name: "sungwoo2"},
 	];
 
 	res.json(member);
