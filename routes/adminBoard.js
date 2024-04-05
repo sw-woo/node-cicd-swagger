@@ -17,4 +17,15 @@ router.get("/:boardId", (req, res) => {
 	res.render(result);
 });
 
+router.get("/?boardId=boardId", (req, res) => {
+	const boardId = req.query.boardId;
+
+	const result = {
+		boardId,
+		result: "OK",
+	};
+
+	res.render(result);
+});
+
 module.exports = router;
