@@ -22,5 +22,5 @@ jobs:
     - run: cd /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin
     - run: pm2 delete all
     - run: pm2 start /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin/www
-
+    - run: pm2 restart backendserver
   
