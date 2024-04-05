@@ -20,7 +20,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: cd /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin
-    - run: pm2 delete all
-    - run: pm2 start /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin/www --name=backendserver --watch
+    # - run: pm2 delete all
+    # - run: pm2 start /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin/www --name=backendserver --watch
     - run: pm2 restart backendserver --update-env
   
