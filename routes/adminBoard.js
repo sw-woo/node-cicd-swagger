@@ -14,18 +14,18 @@ router.get("/:boardId", (req, res) => {
 		result: "OK",
 	};
 
-	res.render(result);
+	res.json(result);
 });
 
-router.get("/?boardId=boardId", (req, res) => {
-	const boardId = req.query.boardId;
+// router.get("/?boardId=boardId", (req, res) => {
+// 	const boardId = req.query.boardId;
 
-	const result = {
-		boardId,
-		result: "OK",
-	};
+// 	const result = {
+// 		boardId,
+// 		result: "OK",
+// 	};
 
-	res.render(result);
-});
+// 	res.json(result);
+// });
 
 module.exports = router;
