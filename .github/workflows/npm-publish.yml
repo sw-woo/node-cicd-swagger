@@ -19,6 +19,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: pm2 restart backendserver
+    - run: cd /home/ubuntu/actions-runner/_work/node-cicd-swagger/node-cicd-swagger/bin
+    - run: pm2 delete all
+    - run: pm2 start www
 
   
