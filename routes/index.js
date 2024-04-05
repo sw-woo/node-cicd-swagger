@@ -161,4 +161,14 @@ router.delete("/user/:user_id", (req, res) => {
 	}
 });
 
+router.get("/user/profile", (req, res) => {
+	const member_Profile = {
+		id: 1,
+		name: "sungwoo",
+		country: "대한민국",
+	};
+
+	res.json(member_Profile);
+});
+
 module.exports = router;
