@@ -166,6 +166,7 @@ router.get("/user/profile", (req, res) => {
 		id: 1,
 		name: "sungwoo",
 		country: "대한민국",
+		email: "swpheus1@gmail.com",
 	};
 
 	res.json(member_Profile);
