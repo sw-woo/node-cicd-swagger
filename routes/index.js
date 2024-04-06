@@ -4,7 +4,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-	res.render("index", {title: "Express"});
+	// res.redirect("iPortfolio/index.html");
+	// res.render("/node-swagger-cicd/public/iPortfolio/index.html", {title: "Express"});
+	res.render("index", {title: "Developer portfolio"});
 });
 
 /**swagger 폴더에 user.swagger.js를 생성함 */
