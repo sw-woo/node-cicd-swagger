@@ -176,4 +176,8 @@ router.get("/user/profile", (req, res) => {
 	res.json(member_Profile);
 });
 
+router.post("/contact", (req, res) => {
+	res.render("index", {result: "ok"});
+});
+
 module.exports = router;

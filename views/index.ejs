@@ -1,16 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title><%= title %></title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Developer Portfolio</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
 		<link rel="stylesheet" href="/stylesheets/style.css" />
 	</head>
 	<body>
-		<h1><%= title %></h1>
-		<p>Welcome to <%= title %></p>
-		<h1>CICD를 성공적으로 수행하였습니다.</h1>
-		<h2>이제부터 반영하는 코드는 바로 웹서버로 베포 됩니다.</h2>
-		<h3>잘 CICD가 적용되는지 확인</h3>
-		<h4>회원가입 페이지</h4>
-		<h4>회원가입 페이지</h4>
+		<header>
+			<div class="container">
+				<h1>woosungwoo Developer Portfolio</h1>
+				<nav>
+					<ul class="nav">
+						<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+						<li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<section id="about" class="section">
+			<div class="container">
+				<h2>About Me</h2>
+				<p>만나서 반갑습니다. 파이썬,자바스크립트 기반 개발자 우성우 입니다!</p>
+			</div>
+		</section>
+		<section id="projects" class="section">
+			<div class="container">
+				<h2>Projects</h2>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="project">
+							<h3>플러터기반 강아지 안구 질병 인식 앱</h3>
+							<a href="https://docs.google.com/presentation/d/1WPm2hPK73DEHnBctxUpxvQ3HzEYXoXXi/edit?usp=sharing&ouid=102286223204177950407&rtpof=true&sd=true"
+								><p>플러터기반 tensorflow edge AI를 사용한 강아지 안구 질병 인식 앱</p></a
+							>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="project">
+							<h3>langchain.js</h3>
+							<a href="https://docs.google.com/presentation/d/1Dvt74sSGBP4skO7gnH-v_EhiiBPY3K2fj1Rrb3IajmU/edit?usp=sharing"
+								><p>langchain.js를 이용한 네이버 기사 크롤링 요약 RAG 따라해보기</p></a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="contact" class="section">
+			<div class="container">
+				<h2>Contact Me</h2>
+				<form action="/contact" method="post">
+					<div class="form-group">
+						<label for="name">이름:</label>
+						<input type="text" id="name" name="name" class="form-control" required />
+					</div>
+					<div class="form-group">
+						<label for="email">이메일:</label>
+						<input type="email" id="email" name="email" class="form-control" required />
+					</div>
+					<div class="form-group">
+						<label for="message">메세지:</label>
+						<textarea id="message" name="message" class="form-control" required></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">보내기</button>
+				</form>
+			</div>
+		</section>
+		<footer>
+			<div class="container">
+				<p>&copy; 2024 Developer Portfolio. All rights reserved.</p>
+			</div>
+		</footer>
 	</body>
 </html>
