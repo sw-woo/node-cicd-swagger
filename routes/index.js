@@ -4,9 +4,9 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-	// res.redirect("iPortfolio/index.html");
+	res.redirect("iPortfolio/index.html");
 	// res.render("/node-swagger-cicd/public/iPortfolio/index.html", {title: "Express"});
-	res.render("index", {title: "Developer portfolio"});
+	// res.render("", {title: "Developer portfolio"});
 });
 
 /**swagger 폴더에 user.swagger.js를 생성함 */
@@ -16,8 +16,9 @@ router.get("/user/users", function (req, res, next) {
 		{id: 2, name: "유저2"},
 		{id: 3, name: "유저3"},
 		{id: 4, name: "유저4"},
-		{id: 4, name: "유저5"},
-		{id: 4, name: "유저5"},
+		{id: 5, name: "유저5"},
+		{id: 6, name: "유저6"},
+		{id: 7, name: "유저7"},
 	];
 	res.json(users);
 });
@@ -179,7 +180,7 @@ router.get("/user/profile", (req, res) => {
 });
 
 router.post("/contact", (req, res) => {
-	res.render("index", {result: "ok"});
+	res.redirect("iPortfolio/index.html");
 });
 
 module.exports = router;
