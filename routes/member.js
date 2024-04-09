@@ -12,6 +12,9 @@ router.get("/all", (req, res) => {
 		{id: 2, name: "sungwoo2"},
 		{id: 3, name: "sungwoo1"},
 		{id: 4, name: "sungwoo2"},
+		{id: 5, name: "sungwoo2"},
+		{id: 6, name: "sungwoo1"},
+		{id: 7, name: "sungwoo2"},
 	];
 
 	res.json(member);
