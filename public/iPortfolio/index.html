@@ -462,5 +462,32 @@
 
 		<!-- Template Main JS File -->
 		<script src="assets/js/main.js"></script>
+
+		<!-- Load jQuery from Google's CDN -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<!-- /contact API성공시 성공 팝업을 띄우고 홈으로 리다이렉트 -->
+		<script>
+			$(document).ready(function () {
+				$(".node-email-form").on("submit", function (e) {
+					e.preventDefault();
+
+					$.ajax({
+						url: $(this).attr("action"),
+						type: $(this).attr("method"),
+						data: $(this).serialize(),
+						success: function (response) {
+							if (response.status === 200) {
+								alert("성공적으로 전송되었습니다!");
+								window.location.href = "/"; // Redirect to home page
+							}
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							console.log(textStatus, errorThrown);
+						},
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
