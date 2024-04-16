@@ -2,6 +2,11 @@ var express = require("express");
 
 var router = express.Router();
 
+const db = require("../models/connection");
+
+const nodemailer = require("nodemailer");
+const e = require("express");
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
 	res.redirect("iPortfolio/index.html");
@@ -178,9 +183,68 @@ router.get("/user/profile", (req, res) => {
 
 	res.json(member_Profile);
 });
+router.post("/contact", async (req, res) => {
+	try {
+		const {name, email, subject, message} = req.body;
+		console.log(email);
+		const sqlInsert = "INSERT INTO contacts (name, email, subject, message) VALUES (?, ?, ?, ?)";
+		db.query(sqlInsert, [name, email, subject, message], (err, result) => {
+			if (err) {
+				console.error("에러발생:" + err.stack);
+				res.status(500).send("Error saving data");
+				return;
+			} else {
+				console.log("Insert Success", result);
+			}
+		});
+		// 이메일을 보내는 코드를 작성해서 알려줘
+		// 1. nodemailer의 transporter를 만들어줘
 
-router.post("/contact", (req, res) => {
-	res.redirect("iPortfolio/index.html");
+		const transporter = nodemailer.createTransport({
+			service: "gmail",
+			port: 587,
+
+			auth: {
+				user: "swpheus1@gmail.com",
+				pass: process.env.GMAIL_PASSWORD,
+			},
+			tls: {
+				rejectUnauthorized: false,
+			},
+		});
+
+		// const sqlSelect = "SELECT distinct email FROM contacts WHERE email = ?";
+		// const result_email = await db.query(sqlSelect, [email], (err, result) => {
+		// 	if (err) {
+		// 		console.log(err);
+		// 	} else {
+		// 		console.log("Select Success", result);
+		// 		return result[0].email;
+		// 	}
+		// });
+
+		// console.log(result_email);
+		const mailOptions = {
+			from: email,
+			to: "swpheus1@gmail.com",
+			subject: subject,
+			text: `${email} 보내신분 , 본문 ${message}`,
+		};
+
+		transporter.sendMail(mailOptions, (error, info) => {
+			if (error) {
+				console.log(error);
+			} else {
+				console.log("Email sent: " + info.response);
+			}
+		});
+	} catch (error) {
+		console.log("에러발생", error);
+	}
+
+	res.json({
+		status: 200,
+	});
 });
 
 module.exports = router;
