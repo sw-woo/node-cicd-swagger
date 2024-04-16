@@ -183,8 +183,7 @@ router.get("/user/profile", (req, res) => {
 
 	res.json(member_Profile);
 });
-
-router.post("/contact", (req, res) => {
+router.post("/contact", async (req, res) => {
 	try {
 		const {name, email, subject, message} = req.body;
 		console.log(email);
@@ -200,28 +199,36 @@ router.post("/contact", (req, res) => {
 		});
 		// 이메일을 보내는 코드를 작성해서 알려줘
 		// 1. nodemailer의 transporter를 만들어줘
+
 		const transporter = nodemailer.createTransport({
 			service: "gmail",
+			port: 587,
+
 			auth: {
 				user: "swpheus1@gmail.com",
 				pass: process.env.GMAIL_PASSWORD,
 			},
+			tls: {
+				rejectUnauthorized: false,
+			},
 		});
 
-		const sqlSelect = "SELECT * FROM contacts WHERE email = ?";
-		const result = db.query(sqlSelect, [email], (err, result) => {
-			if (err) {
-				console.log(err);
-			} else {
-				console.log("Select Success", result);
-				return result;
-			}
-		});
+		// const sqlSelect = "SELECT distinct email FROM contacts WHERE email = ?";
+		// const result_email = await db.query(sqlSelect, [email], (err, result) => {
+		// 	if (err) {
+		// 		console.log(err);
+		// 	} else {
+		// 		console.log("Select Success", result);
+		// 		return result[0].email;
+		// 	}
+		// });
+
+		// console.log(result_email);
 		const mailOptions = {
-			from: result.email,
+			from: email,
 			to: "swpheus1@gmail.com",
 			subject: subject,
-			text: message,
+			text: `${email} 보내신분 , 본문 ${message}`,
 		};
 
 		transporter.sendMail(mailOptions, (error, info) => {
